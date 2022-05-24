@@ -8,9 +8,8 @@ class Home_pages extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text("game"),
+          child: Text("AM"),
         ),
-        backgroundColor: Colors.green,
       ),
       body: Center(
         child: Container(child: Text("Hello this is my first time")),
@@ -20,7 +19,6 @@ class Home_pages extends StatelessWidget {
           title: Center(
             child: Text("You Opened drawer"),
           ),
-          backgroundColor: Colors.green,
         ),
       ),
     );
