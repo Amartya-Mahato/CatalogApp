@@ -7,6 +7,9 @@ class Login_Page extends StatefulWidget {
   State<Login_Page> createState() => _Login_PageState();
 }
 
+String userNmae = "";
+String userEmail = "";
+
 // ignore: camel_case_types
 class _Login_PageState extends State<Login_Page> {
   String str = "";
@@ -70,8 +73,26 @@ class _Login_PageState extends State<Login_Page> {
                       onChanged: (value) {
                         setState(() {
                           str = value;
+                          userNmae = str;
                         });
                       },
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Email",
+                        hintText: "Enter your email",
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) return "email is manditory";
+                        if (!value.contains('.'))
+                          return "not a valid email '.' is missing";
+                        if (!value.contains('@'))
+                          return "not a valid email '@' is missing";
+                        if (value.endsWith('.'))
+                          return "email is ending with '.' ";
+                        return null;
+                      },
+                      onChanged: (value) => userEmail = value,
                     ),
                     TextFormField(
                       validator: (value) {
