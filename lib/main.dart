@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Home_pages.dart';
 import 'package:flutter_application_1/pages/Login_Page.dart';
+import 'package:flutter_application_1/widget/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
@@ -16,7 +17,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: Home_pages(key),
-      initialRoute: "/",
+      initialRoute: Routes.homeRoute,
       // initialRoute: Routes.homeRoute,
       routes: {
         Routes.homeRoute: (context) => Home_pages(key),
@@ -24,14 +25,9 @@ class App extends StatelessWidget {
       },
 
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-        fontFamily: GoogleFonts.lato().fontFamily,
-        primarySwatch: Colors.deepPurple,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        // primarySwatch: Colors.red,
-      ),
+      // theme: MyTheme.lightTheme(context),
+      theme: MyTheme.yellowTheme(context),
+      darkTheme: MyTheme.darkTheme(context),
     );
   }
 }
