@@ -19,7 +19,7 @@ class MyTheme {
   static ThemeData darkTheme(BuildContext context) => ThemeData(
         fontFamily: GoogleFonts.lato().fontFamily,
         brightness: Brightness.dark,
-      );
+  );
 
   static ThemeData yellowTheme(BuildContext context) {
     return ThemeData(
