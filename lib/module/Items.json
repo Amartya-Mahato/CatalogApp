@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "01",
+      "id": 1,
       "name": "iphone 12 pro",
       "desc": "Apple iphone 12 generation",
       "price": 999,
@@ -9,7 +9,7 @@
       "image": "https://abedtahan.com/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone_12_p_max_256gb_slv-1-01.jpg"
     },
     {
-      "id": "02",
+      "id": 2,
       "name": "samsung s21",
       "desc": "Samsung s21 product amazing",
       "price": 800,
@@ -17,7 +17,7 @@
       "image": "https://vergemagazine.co.uk/wp-content/uploads/2021/01/Samsung-Galaxy-S21-5G-www.vodafone.co-6-scaled-e1610647899424-493x580.jpg"
     },
     {
-      "id": "03",
+      "id": 3,
       "name": "one plus 8T",
       "desc": "One plus product version 8T",
       "price": 700,
@@ -25,7 +25,7 @@
       "image": "https://jmcomms.com/wp-content/uploads/2020/10/Lunar-Silver_2-fa-RGB-Custom.jpg"
     },
     {
-      "id": "04",
+      "id": 4,
       "name": "oppo f9",
       "desc": "oppo product f9 generation ",
       "price": 1000,
@@ -33,7 +33,7 @@
       "image": "https://www.cometbuster.com/product/gallery/f9pur.jpg"
     },
     {
-      "id": "05",
+      "id": 5,
       "name": "vivo v15",
       "desc": "Vivo product version v15",
       "price": 980,
@@ -41,7 +41,7 @@
       "image": "https://www.xda-developers.com/files/2019/03/Vivo-V15_2-768x768.jpg"
     },
     {
-      "id": "06",
+      "id": 6,
       "name": "Nokia 3210",
       "desc": "Nokia product version 3210",
       "price": 10000,
@@ -49,7 +49,7 @@
       "image": "https://media.cdnws.com/_i/106143/56358/2829/61/380.jpeg.webp"
     },
     {
-      "id": "07",
+      "id": 7,
       "name": "Realme c15",
       "desc": "Realme product version c15",
       "price": 890,

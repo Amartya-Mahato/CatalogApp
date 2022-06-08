@@ -16,10 +16,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: Home_pages(key),
-      // initialRoute: Routes.homeRoute,
-      initialRoute: Routes.loginRoute,
+      initialRoute: Routes.homeRoute,
+      // initialRoute: Routes.loginRoute,
       routes: {
-        Routes.homeRoute: (context) => Home_pages(key),
+        Routes.homeRoute: (context) => Home_pages(),
         Routes.loginRoute: (context) => Login_Page(),
       },
 
