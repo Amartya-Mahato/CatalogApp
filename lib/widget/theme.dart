@@ -3,10 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-        fontFamily: GoogleFonts.lato().fontFamily,
-        primarySwatch: Colors.deepPurple,
+        fontFamily: GoogleFonts.poppins().fontFamily,
+        // primarySwatch: Colors.deepPurple,
         appBarTheme: AppBarTheme(
-          color: Colors.white,
+          color: MyTheme.creamColor,
           elevation: 0.0,
           iconTheme: IconThemeData(
             color: Colors.black,
@@ -17,13 +17,13 @@ class MyTheme {
       );
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-        fontFamily: GoogleFonts.lato().fontFamily,
+        fontFamily: GoogleFonts.poppins().fontFamily,
         brightness: Brightness.dark,
-  );
+      );
 
   static ThemeData yellowTheme(BuildContext context) {
     return ThemeData(
-      fontFamily: GoogleFonts.lato().fontFamily,
+      fontFamily: GoogleFonts.poppins().fontFamily,
       primarySwatch: Colors.yellow,
       appBarTheme: AppBarTheme(
         color: Colors.yellow,
@@ -31,9 +31,12 @@ class MyTheme {
         iconTheme: IconThemeData(
           color: Colors.black,
         ),
-        titleTextStyle:
-            TextStyle(fontFamily: GoogleFonts.lato().fontFamily, fontSize: 20),
+        titleTextStyle: TextStyle(
+            fontFamily: GoogleFonts.poppins().fontFamily, fontSize: 20),
       ),
     );
   }
+
+  static Color creamColor = Color.fromARGB(255, 255, 243, 205);
+  static Color darkBluishColor = Color(0xff403b58);
 }
