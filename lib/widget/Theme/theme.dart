@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
-        // primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.deepPurple,
         appBarTheme: AppBarTheme(
           color: MyTheme.creamColor,
           elevation: 0.0,
@@ -37,6 +37,6 @@ class MyTheme {
     );
   }
 
-  static Color creamColor = Color.fromARGB(255, 255, 243, 205);
+  static Color creamColor = Color.fromARGB(255, 255, 253, 209);
   static Color darkBluishColor = Color(0xff403b58);
 }

@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/widget/theme.dart';
+import 'package:flutter_application_1/widget/Theme/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../module/catalog.dart';
-import '../widget/cataloglist.dart';
+import '../widget/homePageWidgets/cataloglist.dart';
 
 class Home_pages extends StatefulWidget {
   @override
@@ -22,13 +22,12 @@ class _Home_pagesState extends State<Home_pages> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 5));
+    // await Future.delayed(Duration(seconds: 2));
+
     var catalogJson = await rootBundle.loadString("lib/module/Items.json");
-    // print(catalogJson);
     var decodedData = jsonDecode(catalogJson);
-    // print(decodedData);
     var productsData = decodedData["products"];
-    // print(productsData);
+
     CatalogModel.item = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))
         .toList();
@@ -42,17 +41,16 @@ class _Home_pagesState extends State<Home_pages> {
       backgroundColor: MyTheme.creamColor,
       body: SafeArea(
         child: Container(
-          padding: Vx.m8,
+          padding: Vx.mOnly(right: 16,left: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CatalogHeader(),
+              SizedBox(height: 10,),
               if (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
                 CatalogList().expand()
               else
-                Center(
-                  child: CircularProgressIndicator(),
-                ),
+                  CircularProgressIndicator().centered().py16().expand(),
             ],
           ),
         ),
