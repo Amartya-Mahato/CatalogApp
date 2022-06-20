@@ -6,6 +6,7 @@ import 'package:flutter_application_1/widget/Theme/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../module/catalog.dart';
+import '../widget/homePageWidgets/bottomNavigationBarRow.dart';
 import '../widget/homePageWidgets/cataloglist.dart';
 
 class Home_pages extends StatefulWidget {
@@ -38,23 +39,26 @@ class _Home_pagesState extends State<Home_pages> {
   Widget build(BuildContext context) {
     // final dummyList = List.generate(50, ((index) => CatalogModel.item[0]));
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       body: SafeArea(
         child: Container(
-          padding: Vx.mOnly(right: 16,left: 16),
+          padding: Vx.mOnly(right: 16, left: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CatalogHeader(),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               if (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
                 CatalogList().expand()
               else
-                  CircularProgressIndicator().centered().py16().expand(),
+                CircularProgressIndicator().centered().py16().expand(),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: Bottombar(),
     );
   }
 }
@@ -63,8 +67,19 @@ class CatalogHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      'Catalog App'.text.xl3.bold.color(MyTheme.darkBluishColor).make(),
-      'Trending Products'.text.textStyle(context.captionStyle).xl.color(MyTheme.darkBluishColor).make(),
+      'Catalog App'
+          .text
+          .xl3
+          .bold
+          .color(
+              context.isDarkMode ? MyTheme.creamColor : MyTheme.darkBluishColor)
+          .make(),
+      'Trending Products'
+          .text
+          .color(MyTheme.textThemeColor)
+          .textStyle(context.captionStyle)
+          .xl
+          .make(),
     ]);
   }
 }

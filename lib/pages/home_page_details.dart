@@ -12,7 +12,7 @@ class HomePageDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
@@ -21,34 +21,69 @@ class HomePageDetails extends StatelessWidget {
         children: [
           Hero(
             tag: Key(catalog.id.toString()),
-            child:
-                Image.network(catalog.image).box.height(200).shadow2xl.make(),
+            child: Image.network(catalog.image)
+                .box
+                .roundedLg
+                .height(280)
+                .shadow2xl
+                .make(),
           ).centered().pOnly(top: 16, right: 16, left: 16),
           Expanded(
             child: VxArc(
-              height: 30,
+              height: 35,
               edge: VxEdge.TOP,
               arcType: VxArcType.CONVEY,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
-                    catalog.name.text.bold.uppercase.xl3.make().pOnly(top: 40),
-                    catalog.desc.text.textStyle(context.captionStyle).xl.make(),
+                    catalog.name.text.bold
+                        .color(context.isDarkMode
+                            ? MyTheme.creamColor
+                            : MyTheme.darkBluishColor)
+                        .uppercase
+                        .xl3
+                        .make()
+                        .pOnly(top: 40),
+                    catalog.desc.text
+                        .color(MyTheme.textThemeColor)
+                        .uppercase
+                        .textStyle(context.captionStyle)
+                        .xl
+                        .make(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    "Souris l'amour dans qui corps et renversée, regard contemplons excitant parce et mettrait par fait, face nous décor fait mensonge. Femme gaze mensonge face morceau a musculeux ce m'enivre un, gaze souris apres-demain faudra somptueux divin et mince. Corps beauté vois voici musculeux. Tournons majesté tant surtout d'un demain et crispée exquise. Visage ou de d'un sournois langoureux. Long faite beauté la de divinement me. Encore beauté pleure-t-elle la yeux et grâces soeurs et m'appelle, le regard et doué ce les et, femme mal pour ou de le sincere, la long et apres-demain tout véritable que n'est pleure-t-elle, et comme."
+                        .text
+                        .center
+                        .bold
+                        .color(MyTheme.textThemeColor)
+                        .make()
+                        .px12(),
                     Spacer(),
                     ButtonBar(
                       alignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        "\$${catalog.price}".text.bold.xl2.make(),
+                        "\$${catalog.price}"
+                            .text
+                            .bold
+                            .color(catalog.price > 980
+                                ? Colors.red.shade900
+                                : Colors.green.shade900)
+                            .xl2
+                            .make(),
                         ElevatedButton(
                             onPressed: () => print("gamer"),
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
-                                  MyTheme.darkBluishColor),
+                                  context.backgroundColor),
                               shape: MaterialStateProperty.all(StadiumBorder()),
+                              minimumSize:
+                                  MaterialStateProperty.all(Size(130, 40)),
                             ),
-                            child: "Buy".text.bold.make())
+                            child: "Add to cart".text.color(Colors.white).bold.make())
                       ],
                     ),
                   ],

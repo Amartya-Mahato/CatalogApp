@@ -34,32 +34,45 @@ class CatalogItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     catalog.name.text.uppercase.xl.bold
-                        .color(MyTheme.darkBluishColor)
+                        .color(context.isDarkMode
+                            ? MyTheme.creamColor
+                            : MyTheme.darkBluishColor)
                         .make(),
-                    catalog.desc.text.textStyle(context.captionStyle).make(),
+                    catalog.desc.text
+                        .color(MyTheme.textThemeColor)
+                        .textStyle(context.captionStyle)
+                        .make(),
                     SizedBox(
                       height: 5,
                     ),
                     ButtonBar(
                       alignment: MainAxisAlignment.spaceBetween,
-    
                       children: [
-                        "\$${catalog.price}".text.bold.xl.make(),
+                        "\$${catalog.price}"
+                            .text
+                            .color(catalog.price > 980
+                                ? Colors.red.shade900
+                                : Colors.green.shade900)
+                            .bold
+                            .xl
+                            .make(),
                         ElevatedButton(
                             onPressed: () => print("gamer"),
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  MyTheme.darkBluishColor),
-                              shape: MaterialStateProperty.all(StadiumBorder()),
-                            ),
-                            child: "Buy".text.make())
+                                backgroundColor: MaterialStateProperty.all(
+                                    context.backgroundColor),
+                                shape:
+                                    MaterialStateProperty.all(StadiumBorder()),
+                                maximumSize: MaterialStateProperty.all(
+                                    const Size(115, 40))),
+                            child: "Add to cart".text.color(Colors.white).make())
                       ],
-                    ).pOnly(right: 8.0),
+                    ).pOnly(right: 4.0),
                   ]),
             ),
           ],
         ),
-      ).white.roundedSM.square(140).make().pOnly(left: 10,right: 10,top: 10,bottom: 10),
-    );
+      ).color(context.cardColor).roundedLg.square(139).shadowXs.make(),
+    ).pOnly(left: 10, right: 10, top: 10, bottom: 10);
   }
 }

@@ -24,7 +24,7 @@ class App extends StatelessWidget {
       //   Routes.loginRoute: (context) => Login_Page(),
       // },
       routes: Routmap.routeMap,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       // theme: MyTheme.lightTheme(context),
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),

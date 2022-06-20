@@ -27,12 +27,11 @@ class _CatalogImageState extends State<CatalogImage> {
       padding: const EdgeInsets.all(16),
       child: Image.network(widget.catalog.image)
           .box
-          .shadow2xl
           .roundedSM
           .p4
-          .color(MyTheme.creamColor)
+          .color(context.canvasColor)
           .make()
-          .wh32(context),
+          .wh24(context),
     );
   }
 }
