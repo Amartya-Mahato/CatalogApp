@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class MyTheme {
-  static ThemeData lightTheme(BuildContext context) => ThemeData(
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        primarySwatch: Colors.deepPurple,
-        appBarTheme: AppBarTheme(
-          color: MyTheme.creamColor,
-          elevation: 0.0,
-          iconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-          titleTextStyle: TextStyle(
-              fontFamily: GoogleFonts.lato().fontFamily, fontSize: 20),
-        ),
-      );
+  static Color creamColor = Color.fromARGB(255, 255, 253, 209);
+  static Color darkBluishColor = Color(0xff403b58);
+  static Color textThemeColor = Colors.grey;
 
-  static ThemeData darkTheme(BuildContext context) => ThemeData(
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        brightness: Brightness.dark,
-      );
+  static ThemeData lightTheme(BuildContext context) {
 
-  static ThemeData yellowTheme(BuildContext context) {
     return ThemeData(
       fontFamily: GoogleFonts.poppins().fontFamily,
-      primarySwatch: Colors.yellow,
-      appBarTheme: AppBarTheme(
-        color: Colors.yellow,
-        elevation: 0.0,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-        titleTextStyle: TextStyle(
-            fontFamily: GoogleFonts.poppins().fontFamily, fontSize: 20),
-      ),
+      primarySwatch: Colors.grey,
+      iconTheme: IconThemeData(color: Colors.black),
+      canvasColor: MyTheme.creamColor,
+      cardColor: Colors.white,
+      backgroundColor: MyTheme.darkBluishColor,
     );
   }
 
-  static Color creamColor = Color.fromARGB(255, 255, 253, 209);
-  static Color darkBluishColor = Color(0xff403b58);
+  static ThemeData darkTheme(BuildContext context) {
+
+    return ThemeData(
+      brightness: Brightness.dark,
+      fontFamily: GoogleFonts.poppins().fontFamily,
+      primarySwatch: Colors.grey,
+      iconTheme: IconThemeData(color: Colors.white),
+      canvasColor: Colors.grey.shade900,
+      cardColor: Colors.black,
+      backgroundColor: Colors.blue.shade900,
+    );
+  }
 }
