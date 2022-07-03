@@ -14,7 +14,8 @@ class HomePageDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.canvasColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        elevation: 0,
+        backgroundColor: context.canvasColor,
       ),
       body: SafeArea(
           child: Column(
@@ -24,7 +25,7 @@ class HomePageDetails extends StatelessWidget {
             child: Image.network(catalog.image)
                 .box
                 .roundedLg
-                .height(280)
+                .height(120)
                 .shadow2xl
                 .make(),
           ).centered().pOnly(top: 16, right: 16, left: 16),
