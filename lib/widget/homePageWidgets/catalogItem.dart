@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/module/cart.dart';
 import 'package:flutter_application_1/widget/homePageWidgets/catalogImage.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -56,16 +57,9 @@ class CatalogItem extends StatelessWidget {
                             .bold
                             .xl
                             .make(),
-                        ElevatedButton(
-                            onPressed: () => print("gamer"),
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    context.backgroundColor),
-                                shape:
-                                    MaterialStateProperty.all(StadiumBorder()),
-                                maximumSize: MaterialStateProperty.all(
-                                    const Size(115, 40))),
-                            child: "Add to cart".text.color(Colors.white).make())
+                        AddToCartButton(
+                          catalog: catalog,
+                        )
                       ],
                     ).pOnly(right: 4.0),
                   ]),
@@ -74,5 +68,40 @@ class CatalogItem extends StatelessWidget {
         ),
       ).color(context.cardColor).roundedLg.square(139).shadowXs.make(),
     ).pOnly(left: 10, right: 10, top: 10, bottom: 10);
+  }
+}
+
+class AddToCartButton extends StatefulWidget {
+  final catalog;
+  const AddToCartButton({
+    Key? key,
+    this.catalog,
+  }) : super(key: key);
+
+  @override
+  State<AddToCartButton> createState() => _AddToCartButtonState();
+}
+
+class _AddToCartButtonState extends State<AddToCartButton> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {
+          isAdded = isAdded.toggle();
+          final _catalogmodel = CatalogModel();
+
+          final _cartmodel = CartModel();
+          _cartmodel.catalog = _catalogmodel;
+          _cartmodel.add(widget.catalog);
+          setState(() {});
+        },
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(context.backgroundColor),
+            shape: MaterialStateProperty.all(StadiumBorder()),
+            maximumSize: MaterialStateProperty.all(const Size(120, 40))),
+        child: isAdded
+            ? Icon(Icons.done).iconColor(Colors.white)
+            : "Add to cart".text.color(Colors.white).make());
   }
 }
