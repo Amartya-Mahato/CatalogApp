@@ -92,6 +92,7 @@ class _CartListState extends State<_CartList> {
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
                   _cart.remove(_cart.items[index]);
+                  _CardTotal();
                   setState(() {});
                 },
               ),
