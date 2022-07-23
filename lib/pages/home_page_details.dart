@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widget/Theme/theme.dart';
+import 'package:flutter_application_1/widget/homePageWidgets/addToCartButton.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../module/catalog.dart';
 
@@ -75,16 +76,9 @@ class HomePageDetails extends StatelessWidget {
                                 : Colors.green.shade900)
                             .xl2
                             .make(),
-                        ElevatedButton(
-                            onPressed: () => print("gamer"),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  context.backgroundColor),
-                              shape: MaterialStateProperty.all(StadiumBorder()),
-                              minimumSize:
-                                  MaterialStateProperty.all(Size(130, 40)),
-                            ),
-                            child: "Add to cart".text.color(Colors.white).bold.make())
+                        AddToCartButton(
+                          catalog: catalog,
+                        ),
                       ],
                     ),
                   ],
