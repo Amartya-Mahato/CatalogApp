@@ -7,6 +7,8 @@ import 'package:flutter_application_1/widget/homePageWidgets/catalogImage.dart';
 import 'package:flutter_application_1/widget/homePageWidgets/catalogItem.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../core/store.dart';
+
 class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -41,13 +43,23 @@ class CartPage extends StatelessWidget {
 }
 
 class _CardTotal extends StatelessWidget {
-  final _cart = new CartModel();
+  final CartModel _cart = (VxState.store as MyStore).cartModel;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 80,
+        height: 90,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          "\$${_cart.totalPrice}".text.bold.xl2.color(Colors.pink).make(),
+          VxBuilder(
+            mutations: {RemoveMutation},
+            builder: (context, _, vxstatus) {
+              return "\$${_cart.totalPrice}"
+                  .text
+                  .bold
+                  .xl2
+                  .color(Colors.pink)
+                  .make();
+            },
+          ),
           Spacer(),
           ElevatedButton(
             onPressed: () {
@@ -68,19 +80,15 @@ class _CardTotal extends StatelessWidget {
                   MaterialStateProperty.all(context.backgroundColor),
             ),
           ).w32(context),
-        ]).p16());
+        ]).pOnly(right: 20,left: 20,bottom: 40));
   }
 }
 
-class _CartList extends StatefulWidget {
-  @override
-  _CartListState createState() => _CartListState();
-}
-
-class _CartListState extends State<_CartList> {
-  final _cart = new CartModel();
+class _CartList extends StatelessWidget {
+  final CartModel _cart = (VxState.store as MyStore).cartModel;
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
     return ListView.builder(
         itemCount: _cart.items.length,
         itemBuilder: (context, index) => ListTile(
@@ -91,9 +99,9 @@ class _CartListState extends State<_CartList> {
               trailing: IconButton(
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
-                  _cart.remove(_cart.items[index]);
+                  RemoveMutation(_cart.items[index]);
                   _CardTotal();
-                  setState(() {});
+                  // setState(() {});
                 },
               ),
               title: _cart.items[index].name.text
