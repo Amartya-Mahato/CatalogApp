@@ -75,10 +75,10 @@ class HomePageDetails extends StatelessWidget {
                                 ? Colors.red.shade900
                                 : Colors.green.shade900)
                             .xl2
-                            .make(),
+                            .make().pOnly(left: 10),
                         AddToCartButton(
                           catalog: catalog,
-                        ),
+                        ).pOnly(right: 10),
                       ],
                     ),
                   ],
