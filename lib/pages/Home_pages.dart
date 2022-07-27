@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ import 'package:velocity_x/velocity_x.dart';
 import '../module/catalog.dart';
 import '../widget/homePageWidgets/bottomNavigationBarRow.dart';
 import '../widget/homePageWidgets/cataloglist.dart';
+import 'package:http/http.dart' as http;
 
 class Home_pages extends StatefulWidget {
   @override
@@ -23,9 +25,12 @@ class _Home_pagesState extends State<Home_pages> {
   }
 
   loadData() async {
-    // await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 2));
 
-    var catalogJson = await rootBundle.loadString("lib/module/Items.json");
+    // var catalogJson = await rootBundle.loadString("lib/module/Items.json");
+    var url = Uri.parse("http://10.0.2.2:4000/goServer/products");
+    var response = await http.get(url,headers: {"Accept": "application/json"});
+    var catalogJson = response.body;
     var decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
 
